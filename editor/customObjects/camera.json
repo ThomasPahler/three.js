@@ -1,0 +1,37 @@
+{
+	"metadata": {
+		"version": 4.4,
+		"type": "Object",
+		"generator": "Object3D.toJSON"
+	},
+	"object": {
+		"uuid": "78F7BD8D-209E-4224-86AF-CA843A91EC85",
+		"type": "Group",
+		"name": "Camera",
+		"matrix": [1,0,0,0,0,1,0,0,0,0,1,0,0,12.428800582885742,-0.2118847370147705,1],
+		"children": [
+			{
+				"uuid": "94EB18A2-5753-4A32-98AB-D2A7E4B0EF91",
+				"type": "PerspectiveCamera",
+				"name": "PerspectiveCamera 1",
+				"matrix": [1,0,0,0,0,1,0,0,0,0,1,0,0,0,60,1],
+				"fov": 50,
+				"zoom": 1,
+				"near": 1,
+				"far": 10000,
+				"focus": 10,
+				"aspect": 1,
+				"filmGauge": 35,
+				"filmOffset": 0
+			},
+			{
+				"uuid": "E1D4FF44-137E-47B3-A750-816FC54E3E23",
+				"type": "DirectionalLight",
+				"name": "DirectionalLight 1",
+				"castShadow": true,
+				"matrix": [-0.01690157689154148,-2.730443068915703e-20,0.6405112147331238,0,-2.069846395370775e-18,0.6407341957092285,-2.730442099563423e-20,0,-0.6405112147331238,-2.069846395370775e-18,-0.01690157689154148,0,-35,30,60,1],
+				"color": 16646101,
+				"intensity": 0.8
+			}]
+	}
+}

@@ -413,6 +413,36 @@ Menubar.Add = function ( editor ) {
 
 	} );
 	options.add( option );
+	
+	//own stuff
+	
+	//camera rig
+	options.add( new UI.HorizontalRule() );
+	
+	var option = new UI.Row();
+	option.setClass( 'option' );
+	option.setTextContent( 'Camera Rig' );
+	option.onClick( function() {
+		var loader = new THREE.ObjectLoader();
+		loader.load("./customObjects/camera.json",function ( obj ) {
+			editor.execute( new AddObjectCommand( obj ) );
+			 //editor.scene.add( obj );
+		});
+	} );
+	options.add( option );
+	
+	//boden	
+	var option = new UI.Row();
+	option.setClass( 'option' );
+	option.setTextContent( 'Boden' );
+	option.onClick( function() {
+		var loader = new THREE.ObjectLoader();
+		loader.load("./customObjects/boden.json",function ( obj ) {
+			editor.execute( new AddObjectCommand( obj ) );
+			 //editor.scene.add( obj );
+		});
+	} );
+	options.add( option );
 
 	return container;
 
