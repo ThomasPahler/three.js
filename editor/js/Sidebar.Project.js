@@ -129,6 +129,76 @@ Sidebar.Project = function ( editor ) {
 	vrRow.add( vr );
 
 	container.add( vrRow );
+	
+	// env map
+
+				var hdrCubeRenderTarget;
+	var projectEnvMapRow = new UI.Row();
+	var projectEnvMapEnabled = new UI.Checkbox( false );//.onChange( update );
+	var projectEnvMap = new UI.Texture( THREE.SphericalReflectionMapping );//.onChange( alert("ok") );
+	var projectReflectivity = new UI.Number( 1 ).setWidth( '30px' );//.onChange( update );
+	var projectenvMapSetall = new UI.Button( 'SetAll' ).onClick( function () {
+		if(projectEnvMap.getValue() == undefined){
+		
+				//renderer = new THREE.WebGLRenderer( { antialias: false } );
+				//renderer.setClearColor( new THREE.Color( 0xffffff ) );
+				/*standardMaterial = new THREE.MeshStandardMaterial( {
+					map: null,
+					bumpScale: - 0.05,
+					color: 0xffffff,
+					metalness: 0.0,
+					roughness: 1.0,
+					shading: THREE.SmoothShading
+				} );
+
+				var genCubeUrls = function( prefix, postfix ) {
+					return [
+						prefix + 'px' + postfix, prefix + 'nx' + postfix,
+						prefix + 'py' + postfix, prefix + 'ny' + postfix,
+						prefix + 'pz' + postfix, prefix + 'nz' + postfix
+					];
+				};
+				var hdrUrls = genCubeUrls( "./textures/cube/pisaHDR/", ".hdr" );
+				new THREE.HDRCubeTextureLoader().load( THREE.UnsignedByteType, hdrUrls, function ( hdrCubeMap ) {
+
+					var pmremGenerator = new THREE.PMREMGenerator( hdrCubeMap );
+					pmremGenerator.update( renderer );
+
+					var pmremCubeUVPacker = new THREE.PMREMCubeUVPacker( pmremGenerator.cubeLods );
+					pmremCubeUVPacker.update( renderer );
+
+					hdrCubeRenderTarget = pmremCubeUVPacker.CubeUVRenderTarget;
+					standardMaterial.envMap = hdrCubeRenderTarget.texture;
+					standardMaterial.needsUpdate = true;
+					SetChildEnvMaps(editor.scene,hdrCubeRenderTarget.texture);
+
+				} );
+				//renderer.gammaInput = true;
+				//renderer.gammaOutput = true;
+				var geometry = new THREE.TorusKnotGeometry( 18, 8, 150, 20 );;
+				var torusMesh1 = new THREE.Mesh( geometry, standardMaterial );
+				torusMesh1.position.x = 0.0;
+				torusMesh1.castShadow = true;
+				torusMesh1.receiveShadow = true;
+				editor.scene.add( torusMesh1 );
+				var textureLoader = new THREE.TextureLoader();
+				textureLoader.load( "./textures/roughness_map.jpg", function( map ) {
+					map.wrapS = THREE.RepeatWrapping;
+					map.wrapT = THREE.RepeatWrapping;
+					map.anisotropy = 4;
+					map.repeat.set( 9, 2 );
+					standardMaterial.roughnessMap = map;
+					standardMaterial.bumpMap = map;
+					standardMaterial.needsUpdate = true;
+				} );*/
+				
+		} else{
+			SetChildEnvMaps(editor.scene,projectEnvMap.getValue());
+			/*for (var i in editor.scene.children) {
+				SetChildEnvMaps(editor.scene.children[i],projectEnvMap.getValue());
+			}*/
+		}
+	} );
 
 	//
 
