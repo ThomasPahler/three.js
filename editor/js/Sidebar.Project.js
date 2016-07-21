@@ -199,6 +199,27 @@ Sidebar.Project = function ( editor ) {
 			}*/
 		}
 	} );
+	function SetChildEnvMaps(object, map){
+		for (var i in object.children) {
+			var obj = object.children[i];
+			//if(obj.material)obj.material.envMap = projectEnvMap.getValue();
+			//if(obj.material)editor.execute( new SetMaterialMapCommand( obj, 'envMap', hdrCubeRenderTarget/*projectEnvMap.getValue()*/ ) );
+			if(obj.material){
+				editor.execute( new SetMaterialMapCommand( obj, 'envMap', map/*projectEnvMap.getValue()*/ ) );
+				//obj.material.envMap = map;
+				//obj.material.needsUpdate = true;
+			}
+			SetChildEnvMaps(obj,map);
+		}		
+	}
+
+	projectEnvMapRow.add( new UI.Text( 'Env Map' ).setWidth( '90px' ) );
+	//projectEnvMapRow.add( projectEnvMapEnabled );
+	projectEnvMapRow.add( projectEnvMap );
+	//projectEnvMapRow.add( projectReflectivity );
+	projectEnvMapRow.add( projectenvMapSetall );
+
+	container.add( projectEnvMapRow );
 
 	//
 
