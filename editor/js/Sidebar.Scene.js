@@ -25,8 +25,23 @@ Sidebar.Scene = function ( editor ) {
 
 	function buildHTML( object ) {
 
-		var html = '<span class="type ' + object.type + '"></span> ' + object.name;
+		//var html = '<span class="type ' + object.type + '"></span> ' + object.name;
 
+				function ShowDispChildrenCode(obj){
+					var codes = '';
+					for (var j in obj.children) {
+						codes += "document.getElementById('obj" + obj.children[j].id + "').parentNode.style.display = this.checked?'block':'none';";
+						codes += ShowDispChildrenCode(obj.children[j]);
+					}
+					return codes;
+				}
+				
+				var html = '';// + pad;
+				html += '<span id="obj' + object.id + '" class="type ' + object.type + '"></span> ';
+				//if(object.children.length > 0) html += '<input type="checkbox" checked = "checked" style="-webkit-appearance: none;-moz-appearance: none; appearance: none;border: 6px solid black;" onclick ="' + ShowDispChildrenCode(object) + '"/>';
+				if(object.children.length > 0) html += '<div style="display:inline-block;" onclick ="this.checked = (this.checked==undefined)?true:this.checked; this.checked = !this.checked;' + ShowDispChildrenCode(object) + '"><div style="display:inline-block;width:0px;height:0px;border: 5px solid transparent;border-top:5px solid;margin-top:4px;margin-right:4px;" /></div>';
+				html += object.name;
+				
 		if ( object instanceof THREE.Mesh ) {
 
 			var geometry = object.geometry;
