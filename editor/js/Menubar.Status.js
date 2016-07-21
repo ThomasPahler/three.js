@@ -43,6 +43,7 @@ Menubar.Status = function ( editor ) {
 		editor.storage.set( editor.toJSON() );
 		editor.signals.savingFinished.dispatch();
 	} );
+	
 	if(autosave.getValue() == true)saveLocal.dom.style.display="none";
 	container.add( saveLocal );	
 
