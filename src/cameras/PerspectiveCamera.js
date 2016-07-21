@@ -5,7 +5,7 @@
  * @author tschw
  */
 
-THREE.PerspectiveCamera = function( fov, aspect, near, far ) {
+THREE.PerspectiveCamera = function ( fov, aspect, near, far ) {
 
 	THREE.Camera.call( this );
 
@@ -151,6 +151,13 @@ THREE.PerspectiveCamera.prototype = Object.assign( Object.create( THREE.Camera.p
 			height: height
 		};
 
+		this.updateProjectionMatrix();
+
+	},
+
+	clearViewOffset: function() {
+
+		this.view = null;
 		this.updateProjectionMatrix();
 
 	},
